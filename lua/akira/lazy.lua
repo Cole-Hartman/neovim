@@ -23,13 +23,14 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
+
+
   spec = {
+
     -- import your plugins
     { import = "akira.plugins" },
   },
-  -- -- Configure any other settings here. See the documentation for more details.
-  -- -- colorscheme that will be used when installing plugins.
-  -- install = { colorscheme = { "habamax" } },
+  -- Configure any other settings here. See the documentation for more details.
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
