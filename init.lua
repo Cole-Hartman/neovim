@@ -8,6 +8,9 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 -- Save undo history
 vim.opt.undofile = true
 
