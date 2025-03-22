@@ -1,4 +1,7 @@
-require("akira")
+require("akira.plugins")
+
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Sync clipboard between OS and Neovim. :help 'clipboard'
 vim.schedule(function()
