@@ -15,6 +15,9 @@ end)
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 50
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -23,7 +26,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
