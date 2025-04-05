@@ -9,6 +9,9 @@ return {
 		config = function()
 			require("oil").setup({
 				vim.keymap.set("n", "<leader>.", "<CMD>Oil<CR>", { desc = "Oil" }),
+				view_options = {
+					show_hidden = true,
+				},
 			})
 		end,
 	},

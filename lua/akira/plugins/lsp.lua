@@ -10,7 +10,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "rust_analyzer", "ts_ls", "pyright" },
+				ensure_installed = { "lua_ls", "rust_analyzer", "ts_ls", "pyright", "tailwindcss" },
 			})
 		end,
 	},
@@ -18,8 +18,11 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
+			local capabilities = require('blink.cmp').get_lsp_capabilities()
 			local lspconfig = require("lspconfig")
+
 			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -28,12 +31,15 @@ return {
 					},
 				},
 			})
-			lspconfig.rust_analyzer.setup({})
-			lspconfig.ts_ls.setup({})
-			lspconfig.pyright.setup({})
+			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+			lspconfig.ts_ls.setup({ capabilities = capabilities })
+			lspconfig.pyright.setup({ capabilities = capabilities })
+
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
+
+
 }
