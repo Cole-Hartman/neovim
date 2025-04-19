@@ -24,14 +24,18 @@ return {
 					lsp_format_opt = "fallback"
 				end
 				return {
-					timeout_ms = 500,
+					timeout_ms = 2500,
 					lsp_format = lsp_format_opt,
 				}
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
+				html = { "prettierd", "prettier" },
 				javascript = { "prettierd", "prettier", stop_after_first = true },
+				cpp = { "clang-format" },
+				c = { "clang-format" },
+				cs = { "clang-format" },
 			},
 		},
 	},
