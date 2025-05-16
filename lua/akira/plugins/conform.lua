@@ -36,6 +36,7 @@ return {
 				cpp = { "clang-format" },
 				c = { "clang-format" },
 				cs = { "clang-format" },
+				ruby = { "rubyfmt" },
 			},
 		},
 	},

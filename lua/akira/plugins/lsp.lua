@@ -20,6 +20,8 @@ return {
 					"ts_ls",
 					"pyright",
 					"tailwindcss",
+					"hls",
+					"ruby_lsp",
 				},
 			})
 		end,
@@ -47,6 +49,16 @@ return {
 			lspconfig.clangd.setup({ capabilities = capabilities })
 			lspconfig.csharp_ls.setup({ capabilities = capabilities })
 			lspconfig.html.setup({ capabilities = capabilities })
+			lspconfig.hls.setup({ capabilities = capabilities })
+			lspconfig.ruby_lsp.setup({
+				capabilities = capabilities,
+				cmd = {
+					vim.fn.expand("~/.rbenv/shims/ruby"),
+					"-S",
+					"ruby-lsp",
+				},
+				root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
