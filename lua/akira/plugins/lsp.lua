@@ -60,6 +60,14 @@ return {
 				root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
 			})
 
+			-- Add LSP diagnostic pop up under cursor
+			vim.keymap.set("n", "<leader>e", function()
+				vim.diagnostic.open_float(nil, {
+					focusable = false,
+					border = "rounded",
+				})
+			end, { desc = "Show diagnostic under cursor" })
+
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
