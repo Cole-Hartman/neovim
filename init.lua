@@ -39,3 +39,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- get rid of annoying q: command
+vim.keymap.set("n", "q:", "<Nop>", { noremap = true, silent = true })
