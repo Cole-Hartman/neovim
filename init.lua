@@ -1,3 +1,26 @@
+-- MAC CHANGES -------------
+
+-- Codespace ssh clipboard support
+if vim.fn.has("nvim-0.10") == 1 then
+	local function copy(lines, _)
+		local text = table.concat(lines, "\n")
+		local encoded = vim.fn.system('base64 | tr -d "\n"', text)
+		vim.fn.chansend(vim.v.stderr, "\x1b]52;c;" .. encoded .. "\x07")
+	end
+
+	local function paste()
+		return { vim.fn.getreg(""), vim.fn.getregtype("") }
+	end
+
+	vim.g.clipboard = {
+		name = "osc52",
+		copy = { ["+"] = copy, ["*"] = copy },
+		paste = { ["+"] = paste, ["*"] = paste },
+	}
+end
+
+-----------------------------
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -13,7 +36,7 @@ vim.schedule(function()
 end)
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false -- my cowerkers can't read my line numbers
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 50

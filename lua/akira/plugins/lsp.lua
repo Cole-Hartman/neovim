@@ -13,15 +13,14 @@ return {
 				-- lsps I want Mason to install
 				ensure_installed = {
 					"clangd",
-					"csharp_ls",
+					-- "csharp_ls", broke
 					"html",
 					"lua_ls",
 					"rust_analyzer",
 					"ts_ls",
 					"pyright",
 					"tailwindcss",
-					"hls",
-					"ruby_lsp",
+					-- "ruby_lsp", broke
 				},
 			})
 		end,
@@ -47,18 +46,17 @@ return {
 			lspconfig.ts_ls.setup({ capabilities = capabilities })
 			lspconfig.pyright.setup({ capabilities = capabilities })
 			lspconfig.clangd.setup({ capabilities = capabilities })
-			lspconfig.csharp_ls.setup({ capabilities = capabilities })
+			-- lspconfig.csharp_ls.setup({ capabilities = capabilities })
 			lspconfig.html.setup({ capabilities = capabilities })
-			lspconfig.hls.setup({ capabilities = capabilities })
-			lspconfig.ruby_lsp.setup({
-				capabilities = capabilities,
-				cmd = {
-					vim.fn.expand("~/.rbenv/shims/ruby"),
-					"-S",
-					"ruby-lsp",
-				},
-				root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
-			})
+			-- lspconfig.ruby_lsp.setup({
+			-- 	capabilities = capabilities,
+			-- 	cmd = {
+			-- 		vim.fn.expand("~/.rbenv/shims/ruby"),
+			-- 		"-S",
+			-- 		"ruby-lsp",
+			-- 	},
+			-- 	root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+			-- })
 
 			-- Add LSP diagnostic pop up under cursor
 			vim.keymap.set("n", "<leader>e", function()
